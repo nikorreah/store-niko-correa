@@ -1,0 +1,24 @@
+.navbar-container {
+    height: 480px;
+    z-index: 1;
+    margin-top: 2.5px;
+    width: 100%;
+    position: absolute;
+}
+
+.navbar-pic {
+    height: 480px;
+    z-index: -1;
+}
+
+.title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 64px;
+    color: white;
+    z-index: 1;
+    margin-top: -115px;
+    margin-left: 133px;
+}
+.pic-container {
+    width: 1365px;
+}
