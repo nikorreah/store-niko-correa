@@ -7,37 +7,45 @@ import React, { useContext, useEffect } from "react";
 import { URLUser } from "../utils/utilities"
 
 function Header() {
-    const { user, setUser } = useContext(AppContext)
+    const { userData, setUserData } = useContext(AppContext)
 
-
-    async function getUser() {
-        const request = await fetch(URLUser, {
-            method: 'GET', headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI'
-            },
-        });
-        const response = await request;
-        const userData = await response.json();
-        setUser(userData.data)
+    const getUser = async (setUserData) => {
+        try {
+            const response = await fetch(URLUser, {
+                method: 'GET', headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
+                    redirect: "follow",
+                }});
+                const data =await response.json();
+                console.log(data);
+                setUserData(data);
+            } catch (error) {
+                console.log("error", error)
+            }
     }
-     console.log(getUser())  
+useEffect (() => {
+    if (userData.length === 0) {
+        getUser(setUserData);
+    }
+}, [userData, setUserData])
 
-        return (
-            <header>
-                <div className="header-container">
-                    <img src={logoAerolab} alt="aerolab-logo" className="logo-container" />
-                    <div className="user-container">
-                        <p>name</p>
-                        <div className="point-container">
-                            <p>0000</p>
-                            <img src={coin} alt="coin" className="coin-container" />
-                        </div>
+
+    return (
+        <header>
+            <div className="header-container">
+                <img src={logoAerolab} alt="aerolab-logo" className="logo-container" />
+                <div className="user-container">
+                    <p>{userData.name}</p>
+                    <div className="point-container">
+                        <p>{userData.points}</p>
+                        <img src={coin} alt="coin" className="coin-container" />
                     </div>
-
                 </div>
-            </header>
-        )
-    }
-    export default Header;
+
+            </div>
+        </header>
+    )
+}
+export default Header;
