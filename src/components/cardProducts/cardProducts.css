@@ -1,0 +1,25 @@
+.card-container {
+    height: 276px;
+    width: 276px;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin-left: 30px;
+}
+
+.pic-containe{
+    width: 252px;
+    height: 182px;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.pic-size{
+    width: 175px;
+    height: 142px;
+
+}
+

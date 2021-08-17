@@ -1,5 +1,6 @@
 import Header from "./components/header/Header"
 import Navbar from "./components/nav/Navbar"
+import CardProducts from "./components/cardProducts/CardProducts";
 import './App.css';
 
 
@@ -9,8 +10,7 @@ function App() {
     <div className="App">
       <Header/>
       <Navbar/>
-
-      <p> hola mundo</p>
+      <CardProducts/>
     </div>
   );
 }
