@@ -18,7 +18,6 @@ function CardProducts() {
                 }
             });
             const data = await response.json();
-            console.log(data.element);
             setProductData(data);
         } catch (error) {
             console.log("error", error)
@@ -31,10 +30,20 @@ function CardProducts() {
     }, [productData, setProductData])
 
     return (
-        <div className="card-container">
-        <div className="pic-container">
-           <img src="https://i.ibb.co/h8CBfvP/i-Phone8-x1.png" alt="i-Phone8-x1" border="0" className="pic-size"/>
-         </div>
+        <div>
+             {productData.map((products)=> {
+                <div className="card-container">
+                    <div className="pic-product-containe">
+                        <img src={products.img.url} alt={products.name} key={products._id} border="0" className="pic-size" />
+                    </div>
+                    <hr className="center-line"></hr>
+                    <div className="text-container">
+                        <h5 className="category-text">{products.category}</h5>
+                        <h3 className="product-text ">{products.name}</h3>
+                    </div>
+                </div>
+
+            })}
         </div>
     )
 }
