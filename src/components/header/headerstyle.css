@@ -20,6 +20,11 @@
     flex-direction: row;
     align-items: center;
     margin-top: 22px;
+   
+}
+
+.user-text {
+    padding-right: 27px;
 }
 .point-container {
     height: 48px;

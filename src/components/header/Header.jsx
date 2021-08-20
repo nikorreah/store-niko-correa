@@ -36,7 +36,7 @@ useEffect (() => {
             <div className="header-container">
                 <img src={logoAerolab} alt="aerolab-logo" className="logo-container" />
                 <div className="user-container">
-                    <p>{userData.name}</p>
+                    <p className="user-text">{userData.name}</p>
                     <div className="point-container">
                         <p>{userData.points}</p>
                         <img src={coin} alt="coin" className="coin-container" />

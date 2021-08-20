@@ -1,4 +1,7 @@
-import "./navbarstyle.css"
+import "./navbarstyle.css";
+import React from "react";
+import rightArrow from "../../assets/icons/arrow-right.svg"
+import leftArrow from "../../assets/icons/arrow-left.svg"
 
 
 function NavBar() {
@@ -12,11 +15,17 @@ function NavBar() {
                 <h3 className="nav-text-amount">x of x products</h3>
                 <hr className="line-nav"></hr>
                 <h3 className="sort-by-text">sort by:</h3>
-              
-                    <select claseName="select-most-recent" name="select" id="1">Most recent</select>
-                    <select claseName="selector" name="select" id="2">Lowest price</select>
-                    <select claseName="selector" name="select" id="3">Highets price</select>
-          
+
+                <button className="select-most-recent" type="button">
+                    Most Recent
+                </button>
+                <button className="select-lowest-price" type="button">
+                     Lowest Price </button>
+                     <button className="select-highest-price" type="button">
+                     Highest Price </button>
+                <img src={leftArrow} alt="left arrow" className="left-arrow" />
+                <img src={rightArrow} alt="rigth arrow" className="rigth-arrow" />
+                 
             </nav>
         </div>
     )
