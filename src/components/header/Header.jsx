@@ -5,6 +5,7 @@ import coin from "../../assets/icons/coin.svg";
 import "./headerstyle.css";
 import React, { useContext, useEffect } from "react";
 import { URLUser } from "../utils/utilities"
+import { Link } from "react-router-dom";
 
 function Header() {
     const { userData, setUserData } = useContext(AppContext)
@@ -17,18 +18,19 @@ function Header() {
                     Accept: "application/json",
                     Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
                     redirect: "follow",
-                }});
-                const data =await response.json();
-                setUserData(data);
-            } catch (error) {
-                console.log("error", error)
-            }
+                }
+            });
+            const data = await response.json();
+            setUserData(data);
+        } catch (error) {
+            console.log("error", error)
+        }
     }
-useEffect (() => {
-    if (userData.length === 0) {
-        getUser(setUserData);
-    }
-}, [userData, setUserData])
+    useEffect(() => {
+        if (userData.length === 0) {
+            getUser(setUserData);
+        }
+    }, [userData, setUserData])
 
 
     return (
@@ -41,7 +43,14 @@ useEffect (() => {
                         <p>{userData.points}</p>
                         <img src={coin} alt="coin" className="coin-container" />
                     </div>
+                    <div className="navegation-container">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/redeem">Redeems</Link></li>
+                    <li><Link to="/points">Points</Link></li>
                 </div>
+                </div>
+               
+              
 
             </div>
         </header>

@@ -6,6 +6,10 @@
     flex-direction: row;
     justify-content: space-between;
     z-index: 2;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
 }
 
 .logo-container {
@@ -15,12 +19,11 @@
 
 .user-container{
     height: 48px;
-    width: 215px;
+    width: 615px;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 22px;
-   
 }
 
 .user-text {
@@ -37,3 +40,21 @@
     align-items: center;
     align-content: space-between;
 }
+
+.navegation-container {
+    width: 280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    ;
+}
+
+li {
+    border-radius: 20.5px;
+    background: #EDEDED;
+    padding: 13px;
+    list-style-type: none;
+    flex-direction: row;
+    margin-left: 20px;
+  }
