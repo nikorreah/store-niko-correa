@@ -10,12 +10,9 @@ export const headers = {
 
     export const URLProducts = ('https://coding-challenge-api.aerolab.co/products')
 
+    export const URLPoints= ('https://coding-challenge-api.aerolab.co/user/points')
 
-
-
-
-
-// const URLPoints= 'https://coding-challenge-api.aerolab.co/user/points'
-// const URLHistory= 'https://coding-challenge-api.aerolab.co/user/history'
+    
+// const URLHistory= ('https://coding-challenge-api.aerolab.co/user/history')
 // const URLRedeem= 'https://coding-challenge-api.aerolab.co/redeem'
 

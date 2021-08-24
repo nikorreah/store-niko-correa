@@ -1,10 +1,12 @@
 import "./navbarstyle.css";
-import React from "react";
+import React, {useContext} from "react";
 import rightArrow from "../../assets/icons/arrow-right.svg"
 import leftArrow from "../../assets/icons/arrow-left.svg"
+import { AppContext } from "../context/AppContext";
 
 
 function NavBar() {
+
     return (
         <div className="navbar-container">
             <div className="navbar-pic">
@@ -23,8 +25,8 @@ function NavBar() {
                      Lowest Price </button>
                      <button className="select-highest-price" type="button">
                      Highest Price </button>
-                <img src={leftArrow} alt="left arrow" className="left-arrow" />
-                <img src={rightArrow} alt="rigth arrow" className="rigth-arrow" />
+                <img src={leftArrow} alt="left arrow" className="left-arrow"  />
+                <img src={rightArrow} alt="rigth arrow" className="rigth-arrow"  />
                  
             </nav>
         </div>
