@@ -50,11 +50,17 @@
     ;
 }
 
-li {
+.route-text {
     border-radius: 20.5px;
     background: #EDEDED;
+    color: inherit;
     padding: 13px;
     list-style-type: none;
     flex-direction: row;
     margin-left: 20px;
+    text-decoration-line: none;
   }
+
+  a:link, a:visited, a:active {
+    text-decoration:none;
+}

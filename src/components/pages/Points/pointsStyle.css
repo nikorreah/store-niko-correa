@@ -4,7 +4,8 @@
     font-weight: bold;
     font-size: 55px;
     line-height: 60px;
-    color: #0AD4FA
+    color: #0AD4FA;
+    margin-top: 30px;
 }
 
 .subtitle {
@@ -20,7 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    background-color: #F2F2F2;
 }
 
 .button-container{

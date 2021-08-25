@@ -44,9 +44,9 @@ function Header() {
                         <img src={coin} alt="coin" className="coin-container" />
                     </div>
                     <div className="navegation-container">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/redeem">Redeems</Link></li>
-                    <li><Link to="/points">Points</Link></li>
+                    <li className="route-text"><Link to="/">Home</Link></li>
+                    <li className="route-text"><Link to="/redeem">Redeems</Link></li>
+                    <li className="route-text"><Link to="/points">Points</Link></li>
                 </div>
                 </div>
                
