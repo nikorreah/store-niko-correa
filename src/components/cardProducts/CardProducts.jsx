@@ -7,7 +7,7 @@ import "./cardProducts.css"
 function CardProducts() {
     const { userData } = useContext(AppContext)
 
-    const userPoints = 2000
+    const userPoints = userData.points
 
     const useFetch = (URLProducts) => {
         const { productData, setProductData, userData } = useContext(AppContext)
@@ -63,7 +63,11 @@ function CardProducts() {
                         <div className="text-container">
                             <h5 className="category-text">{prod.category}</h5>
                             <h3 className="product-text ">{prod.name}</h3>
-                            <button onClick={()=>{handleReedem(prod._id, prod.cost)}}>reedem</button>
+                            {userPoints >= prod.cost ? (
+                               <button onClick={()=>{handleReedem(prod._id, prod.cost)}}>reedem</button>  
+                            ) : (
+                            `you need ${prod.cost-userPoints} points`
+                            ) }
                         </div>
                     </div>)
             })
