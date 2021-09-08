@@ -49,9 +49,10 @@ function Header() {
                     <li className="route-text"><Link to="/points">Points</Link></li>
                 </div>
                 </div>
-               
-              
-
+            </div>
+            <div className="navbar-pic">
+                <img src="https://i.ibb.co/k1Hdf4J/header-x1.png" alt="header-x1" border="0" className="pic-container" />
+                <h1 className="title">Electronics </h1>
             </div>
         </header>
     )
