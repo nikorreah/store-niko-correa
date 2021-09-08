@@ -1,13 +1,16 @@
 import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
-import { URLProducts, headers } from "../utils/utilities"
+import { URLProducts, headers, URLRedeem} from "../utils/utilities"
 
 import "./cardProducts.css"
 
 function CardProducts() {
-    const useFetch = (URLProducts) => {
-        const { productData, setProductData } = useContext(AppContext)
+    const { userData } = useContext(AppContext)
 
+    const userPoints = 2000
+
+    const useFetch = (URLProducts) => {
+        const { productData, setProductData, userData } = useContext(AppContext)
         useEffect(() => {
             if (productData.length === 0) {
                 async function getproduct() {
@@ -26,8 +29,27 @@ function CardProducts() {
         }, [productData, setProductData, URLProducts]);
         return { productData };
     };
-
+ console.log(userData)
     const { productData } = useFetch(URLProducts)
+
+    const handleReedem = (selectedProductId, selectedProductCost) => { 
+        if(userPoints >= selectedProductCost) {
+            fetch(URLRedeem, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
+                },
+                body: JSON.stringify({productId: selectedProductId}),
+            })
+            .then(response=>response.json())
+            .then(console.log)
+        } else { 
+            console.log("Te faltan puntos")
+        }
+       }
+    
 
     return (
         <div className="product-container">
@@ -41,6 +63,7 @@ function CardProducts() {
                         <div className="text-container">
                             <h5 className="category-text">{prod.category}</h5>
                             <h3 className="product-text ">{prod.name}</h3>
+                            <button onClick={()=>{handleReedem(prod._id, prod.cost)}}>reedem</button>
                         </div>
                     </div>)
             })
