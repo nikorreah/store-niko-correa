@@ -1,13 +1,7 @@
 .navbar-container {
     z-index: 1;
-    margin-top: 2.5px;
     width: 100%;
     background: #F2F2F2;
-}
-
-
-.navbar-pic {
-    z-index: -1;
 }
 
 .title {

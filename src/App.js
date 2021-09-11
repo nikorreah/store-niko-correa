@@ -1,6 +1,6 @@
 import Header from "./components/header/Header"
 import Navbar from "./components/nav/Navbar"
-import CardProducts from "./components/cardProducts/CardProducts";
+import Home from "./components/cardProducts/CardProducts";
 import './App.css';
 import Points from "./components/pages/Points/Points";
 import Redeem from "./components/pages/Redeems/Redeems";
@@ -13,11 +13,12 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
+        <Route exact path="/" component={Home}/>
         <Route path="/points" component={Points} />
         <Route path="/redeem" component={Redeem} />
       </Switch>
       <Navbar />
-      <CardProducts />
+      {/* <CardProducts /> */}
     </div>
   );
 }

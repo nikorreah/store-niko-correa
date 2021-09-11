@@ -39,6 +39,7 @@ function Redeem() {
         <div className="redeem-container">
             <h1 className="title-redeem"> Redeem Productos </h1>
             <h3 className="subtitle-redeems">There are your redeems product</h3>
+            <div className="redeemed-products-container">
             {history.slice(-60).reverse().map((prodHistory) => {
                 return (
                 <>
@@ -54,6 +55,7 @@ function Redeem() {
                 )
             })
             }
+            </div>
         </div>
     )
 }

@@ -24,7 +24,6 @@ function Points() {
     }
 
 
-
     return (
         <div className="points-container">
             <h1 className="title-points" >Get More Points</h1>
@@ -43,7 +42,6 @@ function Points() {
                     <img src={coin} alt="coin" className="coin-container" />
                 </button>
             </div>
-
         </div>
     )
 }

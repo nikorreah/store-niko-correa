@@ -4,7 +4,7 @@ import { URLProducts, headers, URLRedeem} from "../utils/utilities"
 
 import "./cardProducts.css"
 
-function CardProducts() {
+function Home() {
     const { userData } = useContext(AppContext)
 
     const userPoints = userData.points
@@ -76,4 +76,4 @@ function CardProducts() {
     )
 }
 
-export default CardProducts;
+export default Home;
