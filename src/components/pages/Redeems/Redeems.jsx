@@ -30,7 +30,7 @@ function Redeem() {
         }
     }, [setHistory, getHistory]);
 
-    usePagination(history, 16)
+    
 
     return (
         <div className="redeem-container">

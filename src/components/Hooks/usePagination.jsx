@@ -21,7 +21,7 @@ function prev() {
 
 function jump(page) {
     const pageNumber = Math.max(1, page)
-    setCurrentPage(currentPage => Math.min(pageNumber, maxPage));
+    setCurrentPage((currentPage)=> Math.min(pageNumber, maxPage));
 }
 
 return {next, prev, jump, currentData, currentPage, maxPage};

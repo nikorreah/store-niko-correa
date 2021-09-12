@@ -25,6 +25,25 @@
     border-radius: 8px;
 }
 
+.card-container:hover {
+    cursor: pointer;
+    height: 276px;
+    width: 276px;
+    border:1px solid black;
+    background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
+    
+}
+ .buy-icon {
+     position: absolute;
+     z-index: 1;
+     margin-left: 220px;
+     margin-top: -240px;
+ }
+
+ .buy-icon:hover {
+    cursor: pointer;
+}
+
 .pic-product-containe{
     width: 276px;
     height: 196px;
@@ -76,3 +95,25 @@
     color: #616161;
     margin-left: 24px;
 }
+
+.need-points{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 142px;
+    border-radius: 100px;
+    background: #616161;
+    opacity: 0.8;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    position: absolute;
+    margin-top: -243px;
+    margin-left: 117px;
+    text-align: right;
+    letter-spacing: -0.0329412px;
+    }

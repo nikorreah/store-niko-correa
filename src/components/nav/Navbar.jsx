@@ -8,7 +8,7 @@ import { AppContext } from "../context/AppContext";
 
 
 
-function NavBar({actualPage, maxPage, jumpPage, prevPage, nextPage}) {
+function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
     // const { productData, currentPage, setCurrentPage } = useContext(AppContext)
     
     
@@ -37,7 +37,8 @@ function NavBar({actualPage, maxPage, jumpPage, prevPage, nextPage}) {
     //       />
     //     );
     //   });
-    
+
+
     return (
         <div className="navbar-container">
             <nav className="nav-items">
@@ -53,9 +54,9 @@ function NavBar({actualPage, maxPage, jumpPage, prevPage, nextPage}) {
                      <button className="select-highest-price" type="button">
                      Highest Price </button>
                 <div className="pagination">     
-                <img src={leftArrow} alt="left arrow" className="left-arrow" onClick={()=> prevPage}  />
+                <img src={leftArrow} alt="left arrow" className="left-arrow" onClick={prev}  />
                 <button className="count-container" >{jumpPage} </button>
-                <img src={rightArrow} alt="rigth arrow" className="rigth-arrow" onClick={()=> nextPage} /> 
+                <img src={rightArrow} alt="rigth arrow" className="rigth-arrow" onClick={next} /> 
                 </div>
             </nav>
         </div>

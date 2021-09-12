@@ -1,0 +1,13 @@
+.blue-container {
+    display: flex;
+    height: 276px;
+    width: 276px;
+    border:1px solid black;
+    background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
+}
+
+.blu-icon {
+    margin-top: 240px;
+    margin-left: 215px
+
+}

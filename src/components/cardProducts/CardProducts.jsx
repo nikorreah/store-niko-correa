@@ -2,6 +2,10 @@ import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
 import usePagination from "../Hooks/usePagination";
+import IconBlue from "./IconBlue/iconBlue";
+import iconWhite from "../../assets/icons/buy-white.svg";
+import iconBlue from "../../assets/icons/buy-blue.svg"
+import coin from "../../assets/icons/coin.svg";
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
@@ -58,27 +62,25 @@ function Home() {
        const actualPage= pages.currentData().length;
        const jumpPage= Math.ceil(maxPage / itemsPerPage);
 
-    const renderProduct = pages.currentData().map((element) => {
-        const id = element._id;
-        const image = element.img.hdUrl;
-        const name = element.name;
-        const category = element.category;
-        const cost = element.cost;
+    // const renderProduct = pages.currentData().map((element) => {
+    //     const id = element._id;
+    //     const image = element.img.hdUrl;
+    //     const name = element.name;
+    //     const category = element.category;
+    //     const cost = element.cost;
     
-        return (
-          <Home
-            key={id}
-            idProduct={id}
-            image={image}
-            name={name}
-            category={category}
-            cost={cost}
-          />
-        );
-      });
-
-      console.log(renderProduct)
-       
+    //     return (
+    //       <Home
+    //         key={id}
+    //         idProduct={id}
+    //         image={image}
+    //         name={name}
+    //         category={category}
+    //         cost={cost}
+    //       />
+    //     );
+    //   });
+    //   console.log(renderProduct)
 
     return (
         <div className="product-container">
@@ -89,20 +91,25 @@ function Home() {
             prev={pages.prev}
             next={pages.next}
             />
-            {renderProduct.map((prod) => {
+            <IconBlue
+            cost={productData.cost}
+            />
+            {productData.map((prod) => {
                 return (
                     <div className="card-container" key={prod._id} >
                         <div className="pic-product-containe">
-                            <img src={prod.image} alt={prod.name} key={prod._id} border="0" className="pic-size" />
+                            <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>
                         <hr className="center-line"></hr>
                         <div className="text-container">
                             <h5 className="category-text">{prod.category}</h5>
                             <h3 className="product-text ">{prod.name}</h3>
                             {userPoints >= prod.cost ? (
-                               <button onClick={()=>{handleReedem(prod._id, prod.cost)}}>reedem</button>  
-                            ) : (
-                            `you need ${prod.cost-userPoints} points`
+                               <img src={iconBlue} alt="white Icon" className="buy-icon" onClick={()=>{handleReedem(prod._id, prod.cost)}}/> 
+                            ) : (<div className="need-points">
+                            you need ${prod.cost-userPoints}
+                            <img src={coin} />
+                            </div>
                             ) }
                         </div>
                     </div>)
