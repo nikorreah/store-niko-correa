@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "../../context/AppContext";
+import React from "react";
+// import { AppContext } from "../../context/AppContext";
 import { URLPoints} from "../../utils/utilities"
 import coin from "../../../assets/icons/coin.svg"
 import "./pointsStyle.css"
@@ -7,7 +7,7 @@ import "./pointsStyle.css"
 
 
 function Points() {
-    const { points, setPoints } = useContext(AppContext)
+    // const { points, setPoints } = useContext(AppContext)
     
     const handleGetPoins = (value) => {
         fetch(URLPoints, {

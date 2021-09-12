@@ -1,7 +1,8 @@
 .navbar-container {
-    z-index: 1;
+    /* z-index: 1; */
     width: 100%;
     background: #F2F2F2;
+    margin-top: 20px;
 }
 
 .title {
@@ -54,7 +55,6 @@
     width: 1px;
     transform: rotate(180deg);
     margin-left: 24px;
-    
 }
 
 
@@ -117,10 +117,42 @@
     margin-left: 24px;
 }
 
+.pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
 .rigth-arrow {
     margin-left: 12px;
 }
 
+.rigth-arrow:hover {
+    cursor: pointer;
+}
+
+.count-container{
+    height: 48px;
+    width: 48px;
+    border-radius: 8px;
+    border-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.count-container:hover {
+    cursor: pointer;
+
+}
+
 .left-arrow{
     margin-left: 187px;
+}
+
+.left-arrow:hover {
+    cursor: pointer;
 }

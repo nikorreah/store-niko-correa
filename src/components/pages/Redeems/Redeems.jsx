@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./redeemstyle.css"
 import { URLHistory } from "../../utils/utilities.js"
-
-
+import usePagination from "../../Hooks/usePagination";
 
 function Redeem() {
     const [history, setHistory] = useState([]);
@@ -18,7 +17,7 @@ function Redeem() {
             });
             const data = await response.json();
             setHistory(data);
-            console.log(history)
+
 
         } catch (error) {
             console.log("error", error)
@@ -29,21 +28,19 @@ function Redeem() {
         if (history.length === 0) {
             getHistory();
         }
-    }, [setHistory]);
+    }, [setHistory, getHistory]);
 
-    console.log(history.slice(-100))
-
-
+    usePagination(history, 16)
 
     return (
         <div className="redeem-container">
             <h1 className="title-redeem"> Redeem Productos </h1>
             <h3 className="subtitle-redeems">There are your redeems product</h3>
             <div className="redeemed-products-container">
-            {history.slice(-60).reverse().map((prodHistory) => {
+            {history.slice(-32).reverse().map((prodHistory) => {
                 return (
                 <>
-                    <div className="redeem-product-container">
+                    <div className="redeem-product-container" key={prodHistory._id}>
                         <img src={prodHistory.img.hdUrl} alt="i-Phone8-x1" border="0" className="pic-reddem-size" />
                         <hr className="center-box-line"></hr>               
                         <div className="text-redeem-container">

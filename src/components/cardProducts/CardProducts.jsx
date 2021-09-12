@@ -1,16 +1,18 @@
 import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
+import usePagination from "../Hooks/usePagination";
 
 import "./cardProducts.css"
+import NavBar from "../nav/Navbar";
 
 function Home() {
-    const { userData } = useContext(AppContext)
+    const { userData, currentPage, setCurrentPage } = useContext(AppContext)
 
     const userPoints = userData.points
 
     const useFetch = (URLProducts) => {
-        const { productData, setProductData, userData } = useContext(AppContext)
+        const { productData, setProductData} = useContext(AppContext)
         useEffect(() => {
             if (productData.length === 0) {
                 async function getproduct() {
@@ -18,7 +20,7 @@ function Home() {
                     try {
                         const response = await request();
                         const data = await response.json();
-                        console.log(data);
+                       
                         setProductData(data);
                     } catch (error) {
                         console.log(error, 'error here')
@@ -29,7 +31,7 @@ function Home() {
         }, [productData, setProductData, URLProducts]);
         return { productData };
     };
- console.log(userData)
+
     const { productData } = useFetch(URLProducts)
 
     const handleReedem = (selectedProductId, selectedProductCost) => { 
@@ -50,14 +52,48 @@ function Home() {
         }
        }
     
+       const itemsPerPage= 16;
+       const pages = usePagination(productData, itemsPerPage, currentPage, setCurrentPage);
+       const maxPage= productData.length;
+       const actualPage= pages.currentData().length;
+       const jumpPage= Math.ceil(maxPage / itemsPerPage);
+
+    const renderProduct = pages.currentData().map((element) => {
+        const id = element._id;
+        const image = element.img.hdUrl;
+        const name = element.name;
+        const category = element.category;
+        const cost = element.cost;
+    
+        return (
+          <Home
+            key={id}
+            idProduct={id}
+            image={image}
+            name={name}
+            category={category}
+            cost={cost}
+          />
+        );
+      });
+
+      console.log(renderProduct)
+       
 
     return (
         <div className="product-container">
-            {productData.map((prod) => {
+            <NavBar
+            actualPage={actualPage}
+            maxPage={maxPage}
+            jumpPage={jumpPage}
+            prev={pages.prev}
+            next={pages.next}
+            />
+            {renderProduct.map((prod) => {
                 return (
                     <div className="card-container" key={prod._id} >
                         <div className="pic-product-containe">
-                            <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
+                            <img src={prod.image} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>
                         <hr className="center-line"></hr>
                         <div className="text-container">
