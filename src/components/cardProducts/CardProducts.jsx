@@ -1,11 +1,11 @@
 import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
-import usePagination from "../Hooks/usePagination";;
-import iconWhite from "../../assets/icons/buy-white.svg";
+import usePagination from "../Hooks/usePagination";
 import iconBlue from "../../assets/icons/buy-blue.svg"
 import coin from "../../assets/icons/coin.svg";
-import cardHover from "./IconBlue/iconBlue";
+import CardHover from "./CardHover/CardHover";
+
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
@@ -99,7 +99,8 @@ function Home() {
                     onMouseLeave={() => setHover(false)}
                     onMouseEnter={() => setHover(true)}>
                        {hover && 
-                       (<CardHover/>)}
+                       <CardHover
+                       cost={prod.cost}/>}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>

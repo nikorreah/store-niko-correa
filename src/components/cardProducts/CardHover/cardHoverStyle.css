@@ -1,0 +1,66 @@
+.blue-container {
+    position: absolute;
+    height: 276px;
+    width: 276px;
+    background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
+}
+
+
+.blu-icon {
+    margin-top: 15px;
+    margin-left: 208px;
+    z-index: 4;
+}
+
+.blue-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}  
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  
+}
+
+
+.text-info-blue {
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 45px;
+    text-align: center;
+    letter-spacing: -0.0847059px;
+    color: #FFFFFF;
+}
+
+.coin {
+    width: 28px;
+    height: 28px;
+}
+
+
+.button-reedem {
+    width: 182px;
+    height: 42px;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.0423529px;
+    color: #616161;
+    border-radius: 100px;
+    }
+
+
+
+
+
+    

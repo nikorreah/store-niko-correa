@@ -25,14 +25,7 @@
     border-radius: 8px;
 }
 
-.card-container:hover {
-    cursor: pointer;
-    height: 276px;
-    width: 276px;
-    z-index: 5px;
-    background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
-    
-}
+
  .buy-icon {
      position: absolute;
      z-index: 1;

@@ -10,8 +10,15 @@ function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
     const [list, newList] = useState (productData)
 
 
-    let sortProduct = list.sort((a,b)=>a.cost-b.cost);
-    console.log(list.sort())
+    // let sortProduct = list.sort((a,b)=>a.cost-b.cost);
+    // let sortProductCategory = productData.sort((a,b)=>a.category-b.category);
+    
+    // const handleCost = () =>{
+    //     newList()
+    // }
+    // console.log(sortProduct);
+    // console.log(sortProductCategory)
+
 
     return (
         <div className="navbar-container">
@@ -23,7 +30,7 @@ function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
                 <button className="select-most-recent" type="button">
                     Most Recent
                 </button>
-                <button className="select-lowest-price" type="button" onClick={()=>sortProduct} >
+                <button className="select-lowest-price" type="button"  >
                      Lowest Price </button>
                      <button className="select-highest-price" type="button">
                      Highest Price </button>
