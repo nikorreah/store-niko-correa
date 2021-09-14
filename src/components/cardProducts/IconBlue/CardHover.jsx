@@ -1,15 +1,17 @@
 import React from "react";
 import buyWhite from "../../../assets/icons/buy-white.svg"
+import coin from "../../../assets/icons/coin.svg"
+import "./cardHoverStyle.css"
 
-function IconBlue ({cost}) {
+function CardHover ({cost}) {
     return (
         <div className="blue-container">
             <div>
                 <img src={buyWhite} alt="Blu Icon" className="blu-icon" />
             </div>
             <div>
-                <p>{cost}adfasdf</p>
-                <button></button>
+                <p>{cost}</p><img src={coin} alt="coin" />
+                <button className="button-reedem"></button>
             </div>
 
 
@@ -20,4 +22,4 @@ function IconBlue ({cost}) {
     )
 }
 
-export default IconBlue;
+export default CardHover;

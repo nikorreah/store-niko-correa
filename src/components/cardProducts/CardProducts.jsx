@@ -1,17 +1,19 @@
 import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
-import usePagination from "../Hooks/usePagination";
-import IconBlue from "./IconBlue/iconBlue";
+import usePagination from "../Hooks/usePagination";;
 import iconWhite from "../../assets/icons/buy-white.svg";
 import iconBlue from "../../assets/icons/buy-blue.svg"
 import coin from "../../assets/icons/coin.svg";
+import cardHover from "./IconBlue/iconBlue";
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
+import { useState } from "react/cjs/react.development";
 
 function Home() {
     const { userData, currentPage, setCurrentPage } = useContext(AppContext)
+    const [hover, setHover] = useState (false)
 
     const userPoints = userData.points
 
@@ -91,12 +93,13 @@ function Home() {
             prev={pages.prev}
             next={pages.next}
             />
-            <IconBlue
-            cost={productData.cost}
-            />
             {productData.map((prod) => {
                 return (
-                    <div className="card-container" key={prod._id} >
+                    <div className="card-container" key={prod._id}
+                    onMouseLeave={() => setHover(false)}
+                    onMouseEnter={() => setHover(true)}>
+                       {hover && 
+                       (<CardHover/>)}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>

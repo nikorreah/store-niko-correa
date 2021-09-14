@@ -5,11 +5,13 @@ import leftArrow from "../../assets/icons/arrow-left.svg"
 import { AppContext } from "../context/AppContext";
 
 
-
 function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
     const { productData } = useContext(AppContext)
-    
-    
+    const [list, newList] = useState (productData)
+
+
+    let sortProduct = list.sort((a,b)=>a.cost-b.cost);
+    console.log(list.sort())
 
     return (
         <div className="navbar-container">
@@ -21,7 +23,7 @@ function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
                 <button className="select-most-recent" type="button">
                     Most Recent
                 </button>
-                <button className="select-lowest-price" type="button"  >
+                <button className="select-lowest-price" type="button" onClick={()=>sortProduct} >
                      Lowest Price </button>
                      <button className="select-highest-price" type="button">
                      Highest Price </button>
