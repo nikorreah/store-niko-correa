@@ -21,6 +21,7 @@
 .nav-items { 
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-content: center;
     align-items: center;
     text-align: center;
@@ -62,16 +63,16 @@
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-    height: 48px;
-    width: 163px;
+    height: 3rem;
+    width: 10.18rem;
     background: #EDEDED;
     border-radius: 20.5px;
     margin-left: 24px;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 48px;
+    font-size: 1rem;
+    /* line-height: 48px; */
     letter-spacing: -0.15px;
     color: #A3A3A3;
     padding-left: 17px;
@@ -81,15 +82,15 @@
     appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-    height: 48px;
-    width: 172px;
+    height: 3rem;
+    width: 10.18rem;
     border-radius: 20.5px;
     background: #EDEDED;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 48px;
+    font-size: 1rem;
+    /* line-height: 48px; */
     letter-spacing: -0.15px;
     color: #A3A3A3;
     padding-left: 17px;
@@ -101,15 +102,15 @@
     appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-    height: 48px;
-    width: 178px;
+    height: 3rem;
+    width: 10.18rem;
     border-radius: 20.5px;
     background: #EDEDED;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 48px;
+    font-size: 1rem;
+    /* line-height: 48px; */
     letter-spacing: -0.15px;
     color: #A3A3A3;
     padding-left: 17px;

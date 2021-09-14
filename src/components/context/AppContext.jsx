@@ -7,6 +7,7 @@ export const AppProvider = (props) => {
     const [productData, setProductData] = useState ([]);
     const [points, setPoints] = useState ([]);
     const [currentPage, setCurrentPage] = useState(1);
+  
 
 
     return (
