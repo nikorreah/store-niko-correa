@@ -3,13 +3,14 @@
     height: 276px;
     width: 276px;
     background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
+    border-radius: 8px;
 }
 
 
 .blu-icon {
-    margin-top: 15px;
-    margin-left: 208px;
-    z-index: 4;
+    margin-top: 16px;
+    margin-left: 209px;
+    z-index: 1;
 }
 
 .blue-info-container {
@@ -56,9 +57,15 @@
     text-align: center;
     letter-spacing: -0.0423529px;
     color: #616161;
+    border: none;
     border-radius: 100px;
     }
 
+.button-reedem:hover {
+   color: black;
+   font-weight: 600;
+
+}
 
 
 

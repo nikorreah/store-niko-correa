@@ -28,14 +28,18 @@
 
  .buy-icon {
      position: absolute;
-     z-index: 1;
+     z-index: 0;
      margin-left: 220px;
      margin-top: -240px;
  }
 
- .buy-icon:hover {
-    cursor: pointer;
+ .blu-icon {
+    position: absolute;
+    z-index: 0;
+    margin-left: 219px;
+    margin-top: -242px;
 }
+
 
 .pic-product-containe{
     width: 276px;

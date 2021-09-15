@@ -2,7 +2,8 @@ import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
 import usePagination from "../Hooks/usePagination";
-import iconBlue from "../../assets/icons/buy-blue.svg"
+import iconBlue from "../../assets/icons/buy-blue.svg";
+import iconWhite from "../../assets/icons/buy-white.svg";
 import coin from "../../assets/icons/coin.svg";
 import CardHover from "./CardHover/CardHover";
 
@@ -13,7 +14,7 @@ import { useState } from "react/cjs/react.development";
 
 function Home() {
     const { userData, currentPage, setCurrentPage } = useContext(AppContext)
-    const [hover, setHover] = useState (false)
+    const [hover, setHover] = useState (-1)
 
     const userPoints = userData.points
 
@@ -95,12 +96,15 @@ function Home() {
             />
             {productData.map((prod) => {
                 return (
-                    <div className="card-container" key={prod._id}
-                    onMouseLeave={() => setHover(false)}
-                    onMouseEnter={() => setHover(true)}>
-                       {hover && 
-                       <CardHover
-                       cost={prod.cost}/>}
+                    <div className="card-container" key={prod._id} 
+                    onMouseLeave={() => setHover(-1)}
+                    onMouseEnter={() => setHover(prod._id)}>
+                       {hover === prod._id ? ( 
+                       <CardHover  
+                       cost={prod.cost}
+                       id={prod._id}
+                       handleReedem={handleReedem}
+                       />) : (null)}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>
@@ -109,7 +113,7 @@ function Home() {
                             <h5 className="category-text">{prod.category}</h5>
                             <h3 className="product-text ">{prod.name}</h3>
                             {userPoints >= prod.cost ? (
-                               <img src={iconBlue} alt="white Icon" className="buy-icon" onClick={()=>{handleReedem(prod._id, prod.cost)}}/> 
+                               hover === prod._id ? (<img src={iconWhite} alt="color Icon" className="blu-icon"/>) : (<img src={iconBlue} alt="color Icon" className="buy-icon"/>) 
                             ) : (<div className="need-points">
                             you need ${prod.cost-userPoints}
                             <img src={coin} />
