@@ -1,5 +1,4 @@
 .navbar-container {
-    /* z-index: 1; */
     width: 100%;
     background: #F2F2F2;
     margin-top: 20px;
@@ -63,19 +62,18 @@
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-    height: 3rem;
-    width: 10.18rem;
+    height: 2.68rem;
+    width: 14rem;
     background: #EDEDED;
-    border-radius: 20.5px;
+    border-radius: 100px;
     margin-left: 24px;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
-    /* line-height: 48px; */
+    font-size: 1.2rem;
     letter-spacing: -0.15px;
     color: #A3A3A3;
-    padding-left: 17px;
+    border: none;
 }
 
 .select-lowest-price {
@@ -83,19 +81,17 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
     height: 3rem;
-    width: 10.18rem;
-    border-radius: 20.5px;
+    width: 14rem;
+    border-radius: 100px;
     background: #EDEDED;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
-    /* line-height: 48px; */
+    font-size: 1.2rem;
     letter-spacing: -0.15px;
     color: #A3A3A3;
-    padding-left: 17px;
-    padding-right: 17px;
     margin-left: 24px;
+    border: none;
 }
 
 .select-highest-price {
@@ -103,20 +99,25 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
     height: 3rem;
-    width: 10.18rem;
-    border-radius: 20.5px;
+    width: 14rem;
+    border-radius: 100px;
     background: #EDEDED;
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
-    /* line-height: 48px; */
+    font-size: 1.2rem;
     letter-spacing: -0.15px;
     color: #A3A3A3;
-    padding-left: 17px;
-    padding-right: 17px;
     margin-left: 24px;
+    border: none;
 }
+
+.select-most-recent:hover,
+.select-lowest-price:hover,
+.select-highest-price:hover{
+    background: #0AD4FA;
+    color: white;
+} 
 
 .pagination {
     width: 100%;

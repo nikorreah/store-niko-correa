@@ -62,9 +62,9 @@
     }
 
 .button-reedem:hover {
-   color: black;
+   color: white;
    font-weight: 600;
-
+   background: #616161;
 }
 
 

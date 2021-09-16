@@ -116,7 +116,7 @@ function Home() {
                                hover === prod._id ? (<img src={iconWhite} alt="color Icon" className="blu-icon"/>) : (<img src={iconBlue} alt="color Icon" className="buy-icon"/>) 
                             ) : (<div className="need-points">
                             you need ${prod.cost-userPoints}
-                            <img src={coin} />
+                            <img src={coin} alt="coin" />
                             </div>
                             ) }
                         </div>

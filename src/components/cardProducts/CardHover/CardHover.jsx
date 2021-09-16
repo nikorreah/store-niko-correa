@@ -12,6 +12,9 @@ function CardHover ({cost, handleReedem, id}) {
             <br />
             <br />
             <br />
+            <br />
+            <br />
+            <br />
             <div className="blue-info-container">
                 <div className="info-container"><p className="text-info-blue">{cost}</p> <img src={coin} alt="coin" className="coin" /></div>
                 <button className="button-reedem" onClick={()=>{handleReedem(id, cost)}} >Reedem now</button>

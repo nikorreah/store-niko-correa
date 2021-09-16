@@ -1,5 +1,5 @@
 import "./navbarstyle.css";
-import React, {useContext, useState, useEffect} from "react";
+import React, {useContext} from "react";
 import rightArrow from "../../assets/icons/arrow-right.svg"
 import leftArrow from "../../assets/icons/arrow-left.svg"
 import { AppContext } from "../context/AppContext";
@@ -7,19 +7,20 @@ import { AppContext } from "../context/AppContext";
 
 function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
     const { productData } = useContext(AppContext)
-    const [list, newList] = useState (productData)
 
-
-    // let sortProduct = list.sort((a,b)=>a.cost-b.cost);
-    // let sortProductCategory = productData.sort((a,b)=>a.category-b.category);
+    const handleByLowPrice = () => {
+       productData.sort((a,b)=>a.cost-b.cost);
+    }
     
-    // const handleCost = () =>{
-    //     newList()
-    // }
-    // console.log(sortProduct);
-    // console.log(sortProductCategory)
+    const handleByHighPrice = () =>{
+       productData.sort((a,b)=>a.cost-b.cost).reverse();
+    }
 
-
+//    const handleByCategory = () => {
+//        productData.sort((a,b) => a.name - b.name)
+//    }
+    
+    
     return (
         <div className="navbar-container">
             <nav className="nav-items">
@@ -27,13 +28,13 @@ function NavBar({actualPage, maxPage, jumpPage, prev, next}) {
                 <hr className="line-nav"></hr>
                 <h3 className="sort-by-text">sort by:</h3>
 
-                <button className="select-most-recent" type="button">
+                <button className="select-most-recent" type="button" /*onClick={handleByCategory()}*/ >
                     Most Recent
                 </button>
-                <button className="select-lowest-price" type="button"  >
-                     Lowest Price </button>
-                     <button className="select-highest-price" type="button">
-                     Highest Price </button>
+                <button className="select-lowest-price" type="button" onClick={()=>handleByLowPrice()} >
+                    Lowest Price </button>
+                     <button className="select-highest-price" type="button" onClick={()=>handleByHighPrice()}>
+                    Highest Price </button>
                 <div className="pagination">     
                 <img src={leftArrow} alt="left arrow" className="left-arrow" onClick={prev}  />
                 <button className="count-container" >{jumpPage} </button>
