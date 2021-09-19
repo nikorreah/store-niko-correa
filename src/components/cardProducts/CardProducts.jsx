@@ -98,7 +98,7 @@ function Home() {
                 return (
                     <div className="card-container" key={prod._id} 
                     onMouseLeave={() => setHover(-1)}
-                    onMouseEnter={() => setHover(prod._id)}>
+                    onMouseOver={() => setHover(prod._id)}>
                        {hover === prod._id ? ( 
                        <CardHover  
                        cost={prod.cost}
