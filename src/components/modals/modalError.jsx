@@ -7,7 +7,7 @@ const modalError = () => {
     title: 'Error',
     text: 'Oh no, something went wrong!',
     confirmButtonText: 'Continue',
-    backdrop: '',
+    footer: '<a href="/points">More Points here</a>'
   })
 }
 

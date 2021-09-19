@@ -6,11 +6,14 @@ import iconBlue from "../../assets/icons/buy-blue.svg";
 import iconWhite from "../../assets/icons/buy-white.svg";
 import coin from "../../assets/icons/coin.svg";
 import CardHover from "./CardHover/CardHover";
+import modalSucces from "../modals/modalSucces";
+import modalError from "../modals/modalError";
 
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
 import { useState } from "react/cjs/react.development";
+
 
 function Home() {
     const { userData, currentPage, setCurrentPage } = useContext(AppContext)
@@ -54,6 +57,10 @@ function Home() {
             })
             .then(response=>response.json())
             .then(console.log)
+            modalSucces(true)
+        if (userPoints <= 0) {
+            modalError(true)
+            }
         } else { 
             console.log("Te faltan puntos")
         }
