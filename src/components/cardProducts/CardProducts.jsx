@@ -1,14 +1,13 @@
 import { AppContext } from "../context/AppContext";
 import React, { useContext, useEffect } from "react";
 import { URLProducts, headers, URLRedeem} from "../utils/utilities"
-import usePagination from "../Hooks/usePagination";
 import iconBlue from "../../assets/icons/buy-blue.svg";
 import iconWhite from "../../assets/icons/buy-white.svg";
 import coin from "../../assets/icons/coin.svg";
 import CardHover from "./CardHover/CardHover";
 import modalSucces from "../modals/modalSucces";
 import modalError from "../modals/modalError";
-
+import usePagination from "../Hooks/usePagination";
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
@@ -16,7 +15,7 @@ import { useState } from "react/cjs/react.development";
 
 
 function Home() {
-    const { userData, currentPage, setCurrentPage } = useContext(AppContext)
+    const { userData, currentPage, setCurrentPage} = useContext(AppContext)
     const [hover, setHover] = useState (-1)
 
     const userPoints = userData.points
@@ -72,25 +71,25 @@ function Home() {
        const actualPage= pages.currentData().length;
        const jumpPage= Math.ceil(maxPage / itemsPerPage);
 
-    // const renderProduct = pages.currentData().map((element) => {
-    //     const id = element._id;
-    //     const image = element.img.hdUrl;
-    //     const name = element.name;
-    //     const category = element.category;
-    //     const cost = element.cost;
+    const renderProduct = pages.currentData().map((element) => {
+        const id = element._id;
+        const image = element.img.hdUrl;
+        const name = element.name;
+        const category = element.category;
+        const cost = element.cost;
     
-    //     return (
-    //       <Home
-    //         key={id}
-    //         idProduct={id}
-    //         image={image}
-    //         name={name}
-    //         category={category}
-    //         cost={cost}
-    //       />
-    //     );
-    //   });
-    //   console.log(renderProduct)
+        return (
+          <Home
+            key={id}
+            idProduct={id}
+            image={image}
+            name={name}
+            category={category}
+            cost={cost}
+          />
+        );
+      });
+      
 
     return (
         <div className="product-container">
@@ -98,8 +97,6 @@ function Home() {
             actualPage={actualPage}
             maxPage={maxPage}
             jumpPage={jumpPage}
-            prev={pages.prev}
-            next={pages.next}
             />
             {(productData || []).map((prod) => {
                 return (
