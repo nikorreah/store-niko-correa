@@ -8,21 +8,22 @@ import { AppContext } from "../context/AppContext";
 function NavBar({ actualPage, maxPage, jumpPage, prev, next }) {
     const { productData } = useContext(AppContext)
  
+        const filterData = productData
 
     const handleByLowPrice = () => {
-        const newLowPrice = productData.sort((a, b) => a.cost - b.cost);
+        const newLowPrice = filterData.sort((a, b) => a.cost - b.cost);
         console.log(newLowPrice)
      
     }
 
     const handleByHighPrice = () => {
-        const newHigtPrice = productData.sort((a, b) => a.cost - b.cost).reverse();
+        const newHigtPrice = filterData.sort((a, b) => a.cost - b.cost).reverse();
         console.log(newHigtPrice)
      
     }
 
     const handleByName = () => {
-        const newList = productData.sort((a,b) => {
+        const newList = filterData.sort((a,b) => {
             if(a.name < b.name){
                 return -1;
             }
@@ -33,7 +34,6 @@ function NavBar({ actualPage, maxPage, jumpPage, prev, next }) {
         })
         console.log(newList)
     }
-
 
     return (
         <div className="navbar-container">

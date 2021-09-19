@@ -94,7 +94,7 @@ function Home() {
             prev={pages.prev}
             next={pages.next}
             />
-            {productData.map((prod) => {
+            {(productData || []).map((prod) => {
                 return (
                     <div className="card-container" key={prod._id} 
                     onMouseLeave={() => setHover(-1)}
@@ -104,6 +104,7 @@ function Home() {
                        cost={prod.cost}
                        id={prod._id}
                        handleReedem={handleReedem}
+                       userPoints={userPoints}
                        />) : (null)}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
