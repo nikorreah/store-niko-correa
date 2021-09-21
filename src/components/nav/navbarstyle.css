@@ -117,6 +117,7 @@
 .select-highest-price:hover{
     background: #0AD4FA;
     color: white;
+    cursor: pointer;
 } 
 
 .pagination {

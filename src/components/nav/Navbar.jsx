@@ -30,7 +30,6 @@ function NavBar({ actualPage, maxPage, next, prev}) {
             }
             return 0;
         })
-        console.log(newList)
     }
 
     const handleByPrev = () => {

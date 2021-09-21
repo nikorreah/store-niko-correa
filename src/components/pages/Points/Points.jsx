@@ -1,5 +1,5 @@
-import React from "react";
-// import { AppContext } from "../../context/AppContext";
+import React, {useContext} from "react";
+import { AppContext } from "../../context/AppContext";
 import { URLPoints} from "../../utils/utilities"
 import coin from "../../../assets/icons/coin.svg"
 import "./pointsStyle.css"
@@ -7,7 +7,7 @@ import "./pointsStyle.css"
 
 
 function Points() {
-    // const { points, setPoints } = useContext(AppContext)
+    const {points, setPoints } = useContext(AppContext)
     
     const handleGetPoins = (value) => {
         fetch(URLPoints, {
@@ -16,13 +16,15 @@ function Points() {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
+                redirect: "follow",
             },
-            body: JSON.stringify({amount: value}),
+            body: JSON.stringify({amount: value})
         })
         .then(response=>response.json())
         .then(console.log)
+        setPoints(true);
     }
-
+ 
 
     return (
         <div className="points-container">

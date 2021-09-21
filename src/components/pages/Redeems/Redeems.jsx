@@ -28,7 +28,7 @@ function Redeem() {
         if (history.length === 0) {
             getHistory();
         }
-    }, [setHistory, getHistory, history]);
+    }, [setHistory, history]);
 
     
 

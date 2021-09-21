@@ -15,7 +15,7 @@ import { useState } from "react/cjs/react.development";
 
 
 function Home() {
-    const { userData, currentPage, setCurrentPage } = useContext(AppContext)
+    const { userData, currentPage, setCurrentPage, setPoints } = useContext(AppContext)
     const [hover, setHover] = useState(-1)
 
     const userPoints = userData.points
@@ -56,7 +56,8 @@ function Home() {
             })
                 .then(response => response.json())
                 .then(console.log)
-            modalSucces(true)
+            modalSucces(true);
+            setPoints(true);
             if (userPoints <= 0) {
                 modalError(true)
             }
@@ -64,6 +65,7 @@ function Home() {
             console.log("Te faltan puntos")
         }
     }
+    
 
     const itemsPerPage = 16;
     const page=usePagination(productData, itemsPerPage, currentPage, setCurrentPage);
@@ -103,7 +105,7 @@ console.log(prev)
                                 id={prod._id}
                                 handleReedem={handleReedem}
                                 userPoints={userPoints}
-                            />) : ([])}
+                            />) : (null)}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>

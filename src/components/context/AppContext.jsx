@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const AppProvider = (props) => {
     const [userData, setUserData] = useState ([]);
     const [productData, setProductData] = useState ([]);
-    const [points, setPoints] = useState ([]);
+    const [points, setPoints] = useState (false);
     const [currentPage, setCurrentPage] = useState(1);
   
 
