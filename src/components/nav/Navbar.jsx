@@ -7,13 +7,13 @@ import usePagination from "../Hooks/usePagination";
 
 
 
-function NavBar({actualPage, maxPage,jumpPage}) {
-    const {productData, currentPage, setCurrentPage} = useContext(AppContext)
- 
+function NavBar({ actualPage, maxPage, next, prev}) {
+    const { productData } = useContext(AppContext)
+
     const filterData = productData
 
     const handleByLowPrice = () => {
-         filterData.sort((a, b) => a.cost - b.cost);
+        filterData.sort((a, b) => a.cost - b.cost);
     }
 
     const handleByHighPrice = () => {
@@ -21,11 +21,11 @@ function NavBar({actualPage, maxPage,jumpPage}) {
     }
 
     const handleByName = () => {
-        const newList = filterData.sort((a,b) => {
-            if(a.name < b.name){
+        const newList = filterData.sort((a, b) => {
+            if (a.name < b.name) {
                 return -1;
             }
-            if(a.name > b.name) {
+            if (a.name > b.name) {
                 return 1;
             }
             return 0;
@@ -33,34 +33,15 @@ function NavBar({actualPage, maxPage,jumpPage}) {
         console.log(newList)
     }
 
-//     const itemsPerPage= 16;
-//     const pages = usePagination(filterData, itemsPerPage, currentPage, setCurrentPage);
-//     const maxPage= filterData.length;
-//     const actualPage= pages.currentData().length;
-//     const jumpPage= Math.ceil(maxPage / itemsPerPage);
+    const handleByPrev = () => {
+        return prev
+    }
 
-//     console.log(jumpPage)
+    const handleByNext = () => {
+        return next
+    }
 
-// //  const renderProduct = pages.currentData().map((element) => {
-// //      const id = element._id;
-// //      const image = element.img.hdUrl;
-// //      const name = element.name;
-// //      const category = element.category;
-// //      const cost = element.cost;
- 
-// //      return (
-// //         <Home
-// //         key={id}
-// //         idProduct={id}
-// //         image={image}
-// //         name={name}
-// //         category={category}
-// //         cost={cost}
-// //         />
-// //      );
-// //    });
-  
-   
+
 
     return (
         <div className="navbar-container">
@@ -76,10 +57,8 @@ function NavBar({actualPage, maxPage,jumpPage}) {
                 <button className="select-highest-price" type="button" onClick={() => handleByHighPrice()}>
                     Highest Price </button>
                 <div className="pagination">
-                    <img src={leftArrow} alt="left arrow" className="left-arrow" />
-                    <button className="count-container"> </button>
-                    <button className="count-container">{jumpPage} </button>
-                    <img src={rightArrow} alt="rigth arrow" className="rigth-arrow"  />
+                    <button className="left-arrow" onClick={() => handleByPrev()} > V </button>
+                    <button className="rigth-arrow" onClick={() => handleByNext()} > V </button>
                 </div>
             </nav>
         </div>
