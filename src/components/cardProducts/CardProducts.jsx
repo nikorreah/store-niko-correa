@@ -15,8 +15,9 @@ import NavBar from "../nav/Navbar";
 import { useState } from "react/cjs/react.development";
 
 
+
 function Home() {
-    const { userData, currentPage, setCurrentPage, setUserData } = useContext(AppContext)
+    const { userData, setUserData } = useContext(AppContext)
     const [hover, setHover] = useState(-1)
 
     const userPoints = userData.points
@@ -82,7 +83,7 @@ function Home() {
                     } else {
                         modalError(true)
                     }
-                })
+                }).catch(error=>console.log("Te faltan puntos"))
            
             if(userPoints <= 0) {
                 modalError(true)
@@ -92,38 +93,20 @@ function Home() {
         }
     }
     
-    // useEffect(()=>{
-    //     getUser
-    // }, [])
 
-    const itemsPerPage = 16;
-    const page=usePagination(productData, itemsPerPage, currentPage, setCurrentPage);
-    const maxPage = productData.length;
-    const actualPage = page.currentData().length;
-    const jumpPage = Math.ceil(maxPage / itemsPerPage);
-    const next= function next () {
-        setCurrentPage((currentPage)=> Math.min(currentPage + 1, maxPage));
-    }
-    const prev= function prev() {
-        setCurrentPage((currentPage)=> Math.max(currentPage - 1, 1));
-    }
-    const pageNumber= Math.max(1, page);
-    
-   
-console.log(prev)
+const {next, prev, currentData, currentPage, maxPage, jump } = usePagination(productData, 16)
 
 
     return (
         <div className="product-container">
             <NavBar
-                actualPage={actualPage}
-                maxPage={maxPage}
-                jumpPage={jumpPage}
                 next={next}
                 prev={prev}
-                pageNumber={pageNumber}
+                currentPage={currentPage}
+                maxPage={maxPage}
+                jump={jump}
             />
-            {(page.currentData() || []).map((prod) => {
+            {(currentData() || []).map((prod) => {
                 return (
                     <div className="card-container" key={prod._id}
                         onMouseLeave={() => setHover(-1)}

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import modalError from "../../modals/modalError";
 
 import coin from "../../../assets/icons/coin.svg"
