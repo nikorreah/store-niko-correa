@@ -1,13 +1,15 @@
 import React, {useContext} from "react";
 import { AppContext } from "../../context/AppContext";
-import { URLPoints} from "../../utils/utilities"
+import { URLPoints, URLUser} from "../../utils/utilities"
 import coin from "../../../assets/icons/coin.svg"
 import "./pointsStyle.css"
+import modalError from "../../modals/modalError";
+import modalSucces from "../../modals/modalSucces";
 
 
 
 function Points() {
-    const {points, setPoints } = useContext(AppContext)
+    const {setUserData } = useContext(AppContext)
     
     const handleGetPoins = (value) => {
         fetch(URLPoints, {
@@ -21,10 +23,34 @@ function Points() {
             body: JSON.stringify({amount: value})
         })
         .then(response=>response.json())
-        .then(console.log)
-        setPoints(true);
+        .then(final=>  { 
+            if(final.message === 'Points Updated' ){
+                modalSucces(true)
+                getUser();
+            } else {
+                modalError(true)
+            }
+        }
+        ).catch(error=>console.log("se presento problema trayendo los puntos"))
     }
  
+
+    async function getUser(){
+        try {
+            const response = await fetch(URLUser, {
+                method: 'GET', headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
+                    redirect: "follow",
+                }
+            });
+            const data = await response.json();
+            setUserData(data);
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
 
     return (
         <div className="points-container">

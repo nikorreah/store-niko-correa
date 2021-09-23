@@ -8,6 +8,7 @@ import CardHover from "./CardHover/CardHover";
 import modalSucces from "../modals/modalSucces";
 import modalError from "../modals/modalError";
 import usePagination from "../Hooks/usePagination";
+import { URLUser } from "../utils/utilities";
 
 import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
@@ -15,7 +16,7 @@ import { useState } from "react/cjs/react.development";
 
 
 function Home() {
-    const { userData, currentPage, setCurrentPage, setPoints } = useContext(AppContext)
+    const { userData, currentPage, setCurrentPage, setUserData } = useContext(AppContext)
     const [hover, setHover] = useState(-1)
 
     const userPoints = userData.points
@@ -40,8 +41,27 @@ function Home() {
         }, [productData, setProductData, URLProducts]);
         return { productData };
     };
-
+    
     const { productData } = useFetch(URLProducts)
+
+    async function getUser(){
+        try {
+            const response = await fetch(URLUser, {
+                method: 'GET', headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjOTc5NWQwMDVjZDAwMjE0NDc3MDkiLCJpYXQiOjE2MjgyMTUxODl9.WnOZ5f3lMVnjsX3VI8JKQlCOI3nf1Nu6IhtkdykdsfI',
+                    redirect: "follow",
+                }
+            });
+            const data = await response.json();
+            setUserData(data);
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
+   
 
     const handleReedem = (selectedProductId, selectedProductCost) => {
         if (userPoints >= selectedProductCost) {
@@ -55,10 +75,16 @@ function Home() {
                 body: JSON.stringify({ productId: selectedProductId }),
             })
                 .then(response => response.json())
-                .then(console.log)
-            modalSucces(true);
-            setPoints(true);
-            if (userPoints <= 0) {
+                .then(final=> {
+                    if(final.message === "You've redeem the product successfully"){
+                        modalSucces(true);
+                        getUser();
+                    } else {
+                        modalError(true)
+                    }
+                })
+           
+            if(userPoints <= 0) {
                 modalError(true)
             }
         } else {
@@ -66,6 +92,9 @@ function Home() {
         }
     }
     
+    // useEffect(()=>{
+    //     getUser
+    // }, [])
 
     const itemsPerPage = 16;
     const page=usePagination(productData, itemsPerPage, currentPage, setCurrentPage);

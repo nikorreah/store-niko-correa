@@ -28,3 +28,7 @@ return {next, prev, jump, currentData, currentPage, maxPage};
 }
 
 export default usePagination;
+
+// const [count, setCount] = useState(0)
+// const {next, prev, currentData } = usePagination(productData, 16)
+
