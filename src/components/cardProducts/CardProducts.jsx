@@ -19,6 +19,7 @@ import { useState } from "react/cjs/react.development";
 function Home() {
     const { userData, setUserData } = useContext(AppContext)
     const [hover, setHover] = useState(-1)
+    
 
     const userPoints = userData.points
 
@@ -62,7 +63,7 @@ function Home() {
         }
     }
 
-   
+    
 
     const handleReedem = (selectedProductId, selectedProductCost) => {
         if (userPoints >= selectedProductCost) {
@@ -93,9 +94,29 @@ function Home() {
         }
     }
     
+    const [filterData, setFilterData] = useState (productData)   
 
-const {next, prev, currentData, currentPage, maxPage, jump } = usePagination(productData, 16)
+    const handleByLowPrice = () => {
+        setFilterData(productData.sort((a, b) => a.cost - b.cost));
+    }
 
+    const handleByHighPrice = () => {
+        setFilterData(productData.sort((a, b) => a.cost - b.cost).reverse());
+    }
+
+    const handleByName = () => {
+        productData.sort((a, b) => {
+            if (a._id < b._id) {
+                return -1;
+            }
+            if (a._id > b._id) {
+                return 1;
+            }
+            return 0;
+        })
+    }
+
+const {next, prev, currentData, currentPage } = usePagination(filterData, 16)
 
     return (
         <div className="product-container">
@@ -103,21 +124,26 @@ const {next, prev, currentData, currentPage, maxPage, jump } = usePagination(pro
                 next={next}
                 prev={prev}
                 currentPage={currentPage}
-                maxPage={maxPage}
-                jump={jump}
+                handleByHighPrice={handleByHighPrice}
+                handleByLowPrice={handleByLowPrice}
+                handleByName={handleByName}
             />
-            {(currentData() || []).map((prod) => {
+            {currentData().map((prod) => {
                 return (
                     <div className="card-container" key={prod._id}
-                        onMouseLeave={() => setHover(-1)}
-                        onMouseOver={() => setHover(prod._id)}>
-                        {hover === prod._id ? (
+                         onMouseLeave={() => setHover(-1)}
+                         onMouseEnter={() => setHover(prod._id)}
+                         >
+                         {hover === prod._id ? (
                             <CardHover
                                 cost={prod.cost}
                                 id={prod._id}
                                 handleReedem={handleReedem}
                                 userPoints={userPoints}
-                            />) : (null)}
+                                hover={hover}
+                                setHover={setHover}/>
+                             ) 
+                             : ([])}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>
