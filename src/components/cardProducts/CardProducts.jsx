@@ -1,25 +1,26 @@
 import { AppContext } from "../context/AppContext";
-import React, { useContext, useEffect } from "react";
-import { URLProducts, headers, URLRedeem } from "../utils/utilities"
+import React, { useContext, useEffect, useState } from "react";
+import { URLProducts, headers, URLRedeem, URLUser } from "../utils/utilities"
+import "./cardProducts.css"
+
+//import icons
 import iconBlue from "../../assets/icons/buy-blue.svg";
 import iconWhite from "../../assets/icons/buy-white.svg";
 import coin from "../../assets/icons/coin.svg";
+
+//import moduls
 import CardHover from "./CardHover/CardHover";
 import modalSucces from "../modals/modalSucces";
 import modalError from "../modals/modalError";
-import usePagination from "../Hooks/usePagination";
-import { URLUser } from "../utils/utilities";
-
-import "./cardProducts.css"
 import NavBar from "../nav/Navbar";
-import { useState } from "react/cjs/react.development";
 
-
+//import Hooks
+import usePagination from "../Hooks/usePagination";
 
 function Home() {
     const { userData, setUserData } = useContext(AppContext)
     const [hover, setHover] = useState(-1)
-    
+    const [byPrices, setByPrices] = useState("All Products");
 
     const userPoints = userData.points
 
@@ -43,10 +44,10 @@ function Home() {
         }, [productData, setProductData, URLProducts]);
         return { productData };
     };
-    
+
     const { productData } = useFetch(URLProducts)
 
-    async function getUser(){
+    async function getUser() {
         try {
             const response = await fetch(URLUser, {
                 method: 'GET', headers: {
@@ -63,7 +64,7 @@ function Home() {
         }
     }
 
-    
+
 
     const handleReedem = (selectedProductId, selectedProductCost) => {
         if (userPoints >= selectedProductCost) {
@@ -77,43 +78,43 @@ function Home() {
                 body: JSON.stringify({ productId: selectedProductId }),
             })
                 .then(response => response.json())
-                .then(final=> {
-                    if(final.message === "You've redeem the product successfully"){
+                .then(final => {
+                    if (final.message === "You've redeem the product successfully") {
                         modalSucces(true);
                         getUser();
                     } else {
                         modalError(true)
                     }
-                }).catch(error=>console.log("Te faltan puntos"))
-           
-            if(userPoints <= 0) {
+                }).catch(error => console.log("Te faltan puntos"))
+
+            if (userPoints <= 0) {
                 modalError(true)
             }
         } else {
             console.log("Te faltan puntos")
         }
     }
+
     
-    const [byPrices, setByPrices] = useState("All Products");
     console.log(byPrices);
-  
+
     function sortByPrice(a, b) {
-      if (byPrices === "Lowest Price") {
-        return a.cost - b.cost;
-      } else if (byPrices === "Highest Price") {
-        return b.cost - a.cost;
-      } else if (a._id < b._id) {
+        if (byPrices === "Lowest Price") {
+            return a.cost - b.cost;
+        } else if (byPrices === "Highest Price") {
+            return b.cost - a.cost;
+        } else if (a._id < b._id) {
             return -1;
-      }
+        }
         else if (a._id > b._id) {
             return 1;
-      }
+        }
         return 0;
     }
-  
+
     const filterData = productData.sort(sortByPrice);
 
-const {next, prev, currentData, currentPage } = usePagination(filterData, 16)
+    const { next, prev, currentData, currentPage } = usePagination(filterData, 16)
 
     return (
         <div className="product-container">
@@ -126,19 +127,19 @@ const {next, prev, currentData, currentPage } = usePagination(filterData, 16)
             {currentData().map((prod) => {
                 return (
                     <div className="card-container" key={prod._id}
-                         onMouseLeave={() => setHover(-1)}
-                         onMouseEnter={() => setHover(prod._id)}
-                         >
-                         {hover === prod._id ? (
+                        onMouseLeave={() => setHover(-1)}
+                        onMouseEnter={() => setHover(prod._id)}
+                    >
+                        {hover === prod._id ? (
                             <CardHover
                                 cost={prod.cost}
                                 id={prod._id}
                                 handleReedem={handleReedem}
                                 userPoints={userPoints}
                                 hover={hover}
-                                setHover={setHover}/>
-                             ) 
-                             : ([])}
+                                setHover={setHover} />
+                        )
+                            : ([])}
                         <div className="pic-product-containe">
                             <img src={prod.img.hdUrl} alt={prod.name} key={prod._id} border="0" className="pic-size" />
                         </div>

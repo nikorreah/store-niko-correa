@@ -5,13 +5,10 @@ export const AppContext = createContext();
 export const AppProvider = (props) => {
     const [userData, setUserData] = useState ([]);
     const [productData, setProductData] = useState ([]);
-    const [points, setPoints] = useState (false);
     const [currentPage, setCurrentPage] = useState(1);
   
-
-
     return (
-        <AppContext.Provider value={{userData, setUserData, productData, setProductData, points, setPoints, currentPage, setCurrentPage}}>
+        <AppContext.Provider value={{userData, setUserData, productData, setProductData, currentPage, setCurrentPage}}>
             {props.children}
         </AppContext.Provider>
     )
