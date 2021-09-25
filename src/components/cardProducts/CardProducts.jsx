@@ -94,27 +94,24 @@ function Home() {
         }
     }
     
-    const [filterData, setFilterData] = useState (productData)   
-
-    const handleByLowPrice = () => {
-        setFilterData(productData.sort((a, b) => a.cost - b.cost));
+    const [byPrices, setByPrices] = useState("All Products");
+    console.log(byPrices);
+  
+    function sortByPrice(a, b) {
+      if (byPrices === "Lowest Price") {
+        return a.cost - b.cost;
+      } else if (byPrices === "Highest Price") {
+        return b.cost - a.cost;
+      } else if (a._id < b._id) {
+            return -1;
+      }
+        else if (a._id > b._id) {
+            return 1;
+      }
+        return 0;
     }
-
-    const handleByHighPrice = () => {
-        setFilterData(productData.sort((a, b) => a.cost - b.cost).reverse());
-    }
-
-    const handleByName = () => {
-        productData.sort((a, b) => {
-            if (a._id < b._id) {
-                return -1;
-            }
-            if (a._id > b._id) {
-                return 1;
-            }
-            return 0;
-        })
-    }
+  
+    const filterData = productData.sort(sortByPrice);
 
 const {next, prev, currentData, currentPage } = usePagination(filterData, 16)
 
@@ -124,9 +121,7 @@ const {next, prev, currentData, currentPage } = usePagination(filterData, 16)
                 next={next}
                 prev={prev}
                 currentPage={currentPage}
-                handleByHighPrice={handleByHighPrice}
-                handleByLowPrice={handleByLowPrice}
-                handleByName={handleByName}
+                handleByPrice={setByPrices}
             />
             {currentData().map((prod) => {
                 return (
