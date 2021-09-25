@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/store-niko-correa/static/css/main.383b08ba.chunk.css",
+    "main.js": "/store-niko-correa/static/js/main.4fc71cb1.chunk.js",
+    "main.js.map": "/store-niko-correa/static/js/main.4fc71cb1.chunk.js.map",
+    "runtime-main.js": "/store-niko-correa/static/js/runtime-main.141aca28.js",
+    "runtime-main.js.map": "/store-niko-correa/static/js/runtime-main.141aca28.js.map",
+    "static/js/2.f70014e6.chunk.js": "/store-niko-correa/static/js/2.f70014e6.chunk.js",
+    "static/js/2.f70014e6.chunk.js.map": "/store-niko-correa/static/js/2.f70014e6.chunk.js.map",
+    "static/js/3.95a68fab.chunk.js": "/store-niko-correa/static/js/3.95a68fab.chunk.js",
+    "static/js/3.95a68fab.chunk.js.map": "/store-niko-correa/static/js/3.95a68fab.chunk.js.map",
+    "index.html": "/store-niko-correa/index.html",
+    "static/css/main.383b08ba.chunk.css.map": "/store-niko-correa/static/css/main.383b08ba.chunk.css.map",
+    "static/js/2.f70014e6.chunk.js.LICENSE.txt": "/store-niko-correa/static/js/2.f70014e6.chunk.js.LICENSE.txt",
+    "static/media/aerolab-logo.0a8fb170.svg": "/store-niko-correa/static/media/aerolab-logo.0a8fb170.svg",
+    "static/media/buy-blue.c5c4f01c.svg": "/store-niko-correa/static/media/buy-blue.c5c4f01c.svg",
+    "static/media/buy-white.9b6e6567.svg": "/store-niko-correa/static/media/buy-white.9b6e6567.svg",
+    "static/media/coin.b8bc711d.svg": "/store-niko-correa/static/media/coin.b8bc711d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.141aca28.js",
+    "static/js/2.f70014e6.chunk.js",
+    "static/css/main.383b08ba.chunk.css",
+    "static/js/main.4fc71cb1.chunk.js"
+  ]
+}
